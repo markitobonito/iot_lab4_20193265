@@ -34,7 +34,7 @@ public class ForecasterFragment extends Fragment implements SensorEventListener 
     private SensorManager sensorManager;
     private Sensor accelerometer;
     private boolean isShakeDialogShown = false;
-    private final float SHAKE_THRESHOLD = 2.0f; // m/s²
+    private final float SHAKE_THRESHOLD = 10.0f; // Aumentado para superar la gravedad
 
     @Nullable
     @Override
@@ -92,7 +92,7 @@ public class ForecasterFragment extends Fragment implements SensorEventListener 
             float x = event.values[0];
             float y = event.values[1];
             float z = event.values[2];
-            float acceleration = (float) Math.sqrt(x * x + y * y + z * z);
+            double acceleration = Math.sqrt(x * x + y * y + z * z);
 
             if (acceleration > SHAKE_THRESHOLD && !isShakeDialogShown) {
                 isShakeDialogShown = true;
