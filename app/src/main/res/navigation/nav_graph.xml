@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:startDestination="@id/locationFragment">
+
+    <fragment
+        android:id="@+id/locationFragment"
+        android:name="com.example.myapplication.LocationFragment"
+        android:label="Location">
+        <action
+            android:id="@+id/action_locationFragment_to_forecasterFragment"
+            app:destination="@id/forecasterFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/forecasterFragment"
+        android:name="com.example.myapplication.ForecasterFragment"
+        android:label="Forecaster">
+        <argument
+            android:name="idLocation"
+            app:argType="string"
+            android:defaultValue="" />
+        <action
+            android:id="@+id/action_forecasterFragment_to_dateFragment"
+            app:destination="@id/dateFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/dateFragment"
+        android:name="com.example.myapplication.DateFragment"
+        android:label="Date">
+        <action
+            android:id="@+id/action_dateFragment_to_locationFragment"
+            app:destination="@id/locationFragment"
+            app:popUpTo="@id/locationFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+</navigation>
